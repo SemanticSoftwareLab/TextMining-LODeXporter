@@ -1,0 +1,35 @@
+<!-- 
+* This is the formal vocabulary for the LODeXporter.
+* See http://www.semanticsoftware.info/lodexporter for more information.
+-->
+<rdf:RDF
+  xmlns     = "http://lod.semanticsoftware.info/mapping/mapping#"
+  xml:base  = "http://lod.semanticsoftware.info/mapping/mapping#"
+  xmlns:map = "http://lod.semanticsoftware.info/mapping/mapping#"
+  xmlns:rdf = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:rdfs= "http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:xsd = "http://www.w3.org/2001/XMLSchema#"
+>
+  
+<rdf:Property rdf:about="type">
+    <rdfs:label xml:lang="en">type</rdfs:label>
+    <rdfs:comment>The rdf:type to be used for a specific exported NLP entity.</rdfs:comment>
+    <rdfs:domain rdf:resource="Mapping"/>
+    <rdfs:range rdf:resource="xsd:anyURI"/>  
+</rdf:Property>
+  
+<rdf:Property rdf:about="GATEtype">
+    <rdfs:label xml:lang="en">GATE type</rdfs:label>
+    <rdfs:comment>The type of the GATE annotation to be exported.</rdfs:comment>
+    <rdfs:domain rdf:resource="Mapping"/>
+    <rdfs:range rdf:resource="xsd:String"/>  
+</rdf:Property>
+
+<rdf:Property rdf:about="baseURI">
+    <rdfs:label xml:lang="en">Base URI</rdfs:label>
+    <rdfs:comment>The base URI used to generate the full URI for the exported NLP entity.</rdfs:comment>
+    <rdfs:domain rdf:resource="Mapping"/>
+    <rdfs:range rdf:resource="xsd:anyURI"/>  
+</rdf:Property>  
+  
+</rdf:RDF>

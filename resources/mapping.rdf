@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:dcterms="http://purl.org/dc/terms/"
+  xmlns:ssl="http://www.semanticsoftware.info/ontology/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:um="http://intelleo.eu/ontologies/user-model/ns/"
+  xmlns:map="http://lod.semanticsoftware.info/mapping/mapping#">
+
+  <rdf:Description rdf:about="GATEContentMapping">
+    <rdf:type rdf:resource="map:Mapping"/>
+    <map:type rdf:resource="dcterms:chunk"/>
+    <map:GATEattribute>content</map:GATEattribute>   
+  </rdf:Description>
+  
+  <rdf:Description rdf:about="GATEStartOffsetMapping">
+    <rdf:type rdf:resource="map:Mapping"/>
+    <map:type rdf:resource="dcterms:start"/>
+    <map:GATEattribute>startOffset</map:GATEattribute>   
+  </rdf:Description>
+  
+  <rdf:Description rdf:about="GATEFeatureMapping">
+    <rdf:type rdf:resource="map:Mapping"/>
+    <map:type rdf:resource="foaf:gender"/>
+    <map:GATEfeature>gender</map:GATEfeature>   
+  </rdf:Description>
+
+  <rdf:Description rdf:about="GATEAnnoPerson">
+    <rdf:type rdf:resource="map:Mapping"/>
+    <map:hasMapping rdf:resource="GATEContentMapping"/>
+    <map:hasMapping rdf:resource="GATEStartOffsetMapping"/>
+    <map:hasMapping rdf:resource="GATEFeatureMapping"/>
+    <map:baseURI rdf:resource="http://semanticsoftware.info/lodexporter/"/>
+    <map:type rdf:resource="foaf:Person"/>
+    <map:GATEtype>Person</map:GATEtype>   
+  </rdf:Description> 
+
+  <rdf:Description rdf:about="GATEAnnoOrganization">
+    <rdf:type rdf:resource="map:Mapping"/>
+    <map:baseURI rdf:resource="http://semanticsoftware.info/lodexporter/"/>
+    <map:type rdf:resource="foaf:Organization"/>
+    <map:GATEtype>Organization</map:GATEtype>   
+  </rdf:Description>
+  
+  <rdf:Description rdf:about="GATEAnnoLocation">
+    <rdf:type rdf:resource="map:Mapping"/>
+    <map:hasMapping rdf:resource="GATEContentMapping"/>
+    <map:baseURI rdf:resource="http://semanticsoftware.info/lodexporter/"/>
+    <map:type rdf:resource="foaf:Location"/>
+    <map:GATEtype>Location</map:GATEtype>   
+  </rdf:Description>
+</rdf:RDF>
