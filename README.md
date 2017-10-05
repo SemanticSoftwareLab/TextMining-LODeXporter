@@ -1,3 +1,5 @@
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
+
 # TextMining-LODeXporter
 
 The LODeXporter is a [GATE](https://gate.ac.uk/ "General Architecture for Text Engineering (GATE)") component that can export NLP annotations directly to a triplestore, with configurable vocabularies, for use in LOD applications. 
