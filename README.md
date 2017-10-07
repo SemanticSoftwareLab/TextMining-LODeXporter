@@ -1,4 +1,4 @@
-[![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
+[![Build Status](http://assistant.cs.concordia.ca:8080/job/TextMining-LODeXporter/badge/icon)](http://assistant.cs.concordia.ca:8080/job/TextMining-LODeXporter/)  [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](https://www.gnu.org/licenses/lgpl-3.0)
 
 # TextMining-LODeXporter
 

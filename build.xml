@@ -250,6 +250,7 @@
                                 <pathelement path="${test.classes.dir}" />
                                 <pathelement path="${test.resources.dir}" />
                                 <pathelement location="x/y/z"/>
+                                <fileset dir="${lib.dir}" includes="**/*.jar" />
                             </classpath>
                 </junit>
             </jacoco:coverage>
