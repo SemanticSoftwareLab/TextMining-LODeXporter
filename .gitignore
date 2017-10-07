@@ -1,8 +1,20 @@
 # Compiled class file
 *.class
 
+# Javadoc
+doc/javadoc/
+
+# Reports
+test/reports/
+
 # Libraries
 lib/
+
+# Eclipse
+.checkstyle
+.classpath
+.pmd
+.project
 
 # Package Files #
 *.jar
