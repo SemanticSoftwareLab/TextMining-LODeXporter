@@ -5,4 +5,4 @@
 The [LODeXporter](http://www.semanticsoftware.info/lodexporter) is a [GATE](https://gate.ac.uk/ "General Architecture for Text Engineering (GATE)") component that can export NLP annotations directly to a triplestore, with configurable vocabularies, for use in LOD applications. 
 
 ## Documentation
-Please refer to the [Wiki](https://github.com/SemanticSoftwareLab/TextMining-LODeXporter/wiki) for compilation and usage instructions. 
+Please refer to the [LODeXporter Wiki](https://github.com/SemanticSoftwareLab/TextMining-LODeXporter/wiki) for compilation and usage instructions. 
