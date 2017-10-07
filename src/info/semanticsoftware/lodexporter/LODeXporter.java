@@ -62,9 +62,10 @@ import org.apache.log4j.Logger;
 /**
  * This class is the implementation of the LODeXporter PR.
  */
-@CreoleResource(name = "LODeXporter", comment = "A PR to transform GATE annotations to LOD triples.")
+@CreoleResource(name = "LODeXporter", comment = "A PR to transform GATE annotations to RDF triples.")
 public class LODeXporter extends AbstractLanguageAnalyser implements ProcessingResource, ControllerAwarePR {
 	private static final long serialVersionUID = 1L;
+	protected static final String LODEXPORTER_SESSION_FEATURE = "LODeXporterSession";
 	private Boolean exportToFile; // true if we export triples to file, false if we use an external KB
 
 	/**
@@ -91,13 +92,13 @@ public class LODeXporter extends AbstractLanguageAnalyser implements ProcessingR
 	protected static final Logger LOGGER = Logger.getLogger(LODeXporter.class);
 
 	// creole parameters
-	@CreoleParameter(comment = "TDB RDF store directory", defaultValue = "")
+	@CreoleParameter(comment = "TDB RDF store directory (direct export to triplestore)", defaultValue = "")
 	private String rdfStoreDir;
 
 	@CreoleParameter(comment = "Mapping rules file (when not using RDF store directory)", defaultValue = "resources/mapping.rdf")
 	private URL mappingFile;
 
-	@CreoleParameter(comment = "File name for exported triples (when not using RDF store directory)", defaultValue = "/tmp/lodexport.nq")
+	@CreoleParameter(comment = "Directory for exported triples (when not using RDF store directory)", defaultValue = "/tmp")
 	@RunTime
 	private String exportFilePath;
 
@@ -355,6 +356,9 @@ public class LODeXporter extends AbstractLanguageAnalyser implements ProcessingR
 			corpusURI = "http://semanticsoftware.info/lodexporter/Corpus/" + corpusName;
 			// TODO ^^ provide for a custom prefix for "corpus"
 		}
+		
+		// store the session ID as a document-level feature (used as name in file-based export)
+        document.getFeatures().put(LODEXPORTER_SESSION_FEATURE, sessionID); 
 
 		/*
 		 * System.out.println("Mapping inside execute:"); for (SubjectMapping m
@@ -407,7 +411,7 @@ public class LODeXporter extends AbstractLanguageAnalyser implements ProcessingR
 			myTripleStore.endTransaction();
 			if (exportToFile) {
 				myTripleStore.beginTransaction(TransactionType.READ);
-				myTripleStore.exportTriplesToFile(getExportFilePath());
+				myTripleStore.exportTriplesToFile(getExportFilePath() + "/" + sessionID + ".nq");
 				myTripleStore.endTransaction();
 				try {
 					reInit(); // FIXME do we really need a re-init here?

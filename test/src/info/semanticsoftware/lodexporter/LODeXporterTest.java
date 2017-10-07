@@ -167,7 +167,7 @@ public class LODeXporterTest {
 		final FeatureMap fm = Factory.newFeatureMap();
 		fm.put(PARAM_MAPPING_FILE, MAPPING_FILE);
 		fm.put(PARAM_RDF_STORE_DIR, "");
-		fm.put(EXPORT_FILE_PATH, "/tmp/testdoc1.nq");
+		fm.put(EXPORT_FILE_PATH, "/tmp/");
 	    final LanguageAnalyser lodexpr = getPR(fm);
 		
 	    final Document doc = Factory.newDocument(getClass().getResource("/testdoc1.xml").toURI().toURL());
@@ -175,7 +175,7 @@ public class LODeXporterTest {
 		lodexpr.setCorpus(null);
 		lodexpr.execute();
 		
-		checkTriples("/tmp/testdoc1.nq");
+		checkTriples("/tmp/" + doc.getFeatures().get(LODeXporter.LODEXPORTER_SESSION_FEATURE) + ".nq");
 	}
 
 	/**
