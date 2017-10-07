@@ -15,6 +15,7 @@ lib/
 .classpath
 .pmd
 .project
+.settings
 
 # Package Files #
 *.jar
