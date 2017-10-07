@@ -82,6 +82,7 @@ public class LODeXporterTest {
 	 */
 	@BeforeClass
 	public static void initGate() throws GateException, MalformedURLException {
+		Gate.runInSandbox(true);
 		Gate.init();
 		final CreoleRegister cReg = Gate.getCreoleRegister();
         final String pluginDir = System.getProperties().getProperty("lodexporter.plugin.dir");

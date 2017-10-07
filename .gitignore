@@ -6,6 +6,7 @@ doc/javadoc/
 
 # Reports
 test/reports/
+version.properties
 
 # Libraries
 lib/
