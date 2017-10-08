@@ -33,5 +33,6 @@
 		<dependency org="org.apache.jena" name="jena-tdb" rev="3.4.0"/>
 		<dependency org="commons-lang" name="commons-lang" rev="2.6"/>
     	<dependency org="com.puppycrawl.tools" name="checkstyle" rev="8.2"/>
+    	<dependency org="com.google.guava" name="guava" rev="23.1-jre"/>
 	</dependencies>
 </ivy-module>
