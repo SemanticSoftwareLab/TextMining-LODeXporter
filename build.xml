@@ -104,8 +104,8 @@
 	<target name="all" depends="prepare,jar,javadoc" />
 
 	<!-- Run code analysis tools -->
-	<target name="analysis" depends="checkstyle" />
-	
+	<target name="analysis" depends="checkstyle,pmd,cpd" />
+
 	<!-- record information about a build -->
 	<target name="buildprops">
 		<tstamp>
@@ -232,7 +232,7 @@
 	<target name="distro.prepare" depends="clean.classes, clean.tests" />
 
 	<!-- Code analysis targets -->
-	
+
 	<!-- Checkstyle analysis -->
 	<property name="checkstyle.home" value="${analysisDir}" />
 	<property name="checkstyle.config" value="${checkstyle.home}/ssl_checkstyle.xml" />
@@ -245,6 +245,31 @@
 			<formatter type="xml" tofile="${checkstyle.report}"/>
 			<fileset dir="." includes="**/*.java" excludes="Applications/*/package/**/*.java"/>
 		</cs:checkstyle>
+	</target>
+
+	<!-- PMD analysis -->
+	<target name="pmd" depends="prepare">
+		<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask">
+			<classpath refid="compile.classpath" />
+		</taskdef>
+		<pmd shortFilenames="true">
+			<sourceLanguage name="java" version="1.8"/>
+			<ruleset>${analysisDir}/ssl_pmd_java_ruleset.xml</ruleset>
+			<formatter type="xml" toFile="${analysisDir}/pmd-result.xml">
+				<param name="linkPrefix" value="http://pmd.sourceforge.net/xref/"/>
+			</formatter>
+			<fileset dir="." includes="**/*.java" excludes="Applications/*/package/**/*.java"/>
+		</pmd>
+	</target>
+
+	<!-- CPD analysis -->
+	<target name="cpd" depends="prepare">
+		<taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask">
+			<classpath refid="compile.classpath" />
+		</taskdef>
+		<cpd minimumTokenCount="100"  encoding="utf-8" format="xml" outputFile="${analysisDir}/cpd-result.xml">
+			<fileset dir="." includes="**/*.java" excludes="Applications/*/package/**/*.java"/>
+		</cpd>
 	</target>
 
 </project>
