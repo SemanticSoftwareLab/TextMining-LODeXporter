@@ -30,17 +30,17 @@ package info.semanticsoftware.lodexporter;
  */
 public class PropertyMapping extends Mapping {
 
-    private final String GATEattribute; //NOPMD
-    private final String GATEfeature; //NOPMD
+    private final String gateAttribute;
+    private final String gateFeature;
 
-    public PropertyMapping(final String rule, final String type, final String GATEType,
+    public PropertyMapping(final String rule, final String type, final String gateType,
             final String myGATEfeature, final String myGATEattribute) {
-        super(rule, type, GATEType);
-        this.GATEfeature = myGATEfeature;
-        this.GATEattribute = myGATEattribute;
-        if (this.GATEfeature != null && this.GATEattribute != null) {
+        super(rule, type, gateType);
+        this.gateFeature = myGATEfeature;
+        this.gateAttribute = myGATEattribute;
+        if (this.gateFeature != null && this.gateAttribute != null) {
             throw new IllegalArgumentException("Both GATEfeature and GATEattribute have values.");
-        } else if (this.GATEfeature == null && this.GATEattribute == null) {
+        } else if (this.gateFeature == null && this.gateAttribute == null) {
             throw new IllegalArgumentException("Both GATEfeature and GATEattribute are null.");
         }
     }
@@ -49,18 +49,21 @@ public class PropertyMapping extends Mapping {
      * @return the GATEfeature
      */
     public final String getGATEfeature() {
-        return GATEfeature;
+        return gateFeature;
     }
 
     /**
      * @return the GATEattribute
      */
     public final String getGATEattribute() {
-        return GATEattribute;
+        return gateAttribute;
     }
 
+    /* (non-Javadoc)
+     * @see info.semanticsoftware.lodexporter.Mapping#toString()
+     */
     @Override
 	public String toString() {
-        return super.toString() + " GATEfeature=" + GATEfeature + " GATEattribute=" + GATEattribute;
+        return super.toString() + " GATEfeature=" + gateFeature + " GATEattribute=" + gateAttribute;
     }
 }

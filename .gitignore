@@ -10,6 +10,7 @@ version.properties
 checkstyle-result.xml
 pmd-result.xml
 cpd-result.xml
+findbugsXml.xml
 
 # Libraries
 lib/

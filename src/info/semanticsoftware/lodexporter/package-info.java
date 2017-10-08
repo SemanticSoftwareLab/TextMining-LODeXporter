@@ -22,4 +22,7 @@
  * 
  */
 
+/** 
+ * The package for the LODeXporter GATE PR. 
+ */
 package info.semanticsoftware.lodexporter;

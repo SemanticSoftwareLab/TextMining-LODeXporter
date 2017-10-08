@@ -25,7 +25,8 @@
 package info.semanticsoftware.lodexporter;
 
 /***
- * Extends a mapping object with a baseURI field for URI generation of exported triples.
+ * Extends a mapping object with a baseURI field for URI generation of exported
+ * triples.
  * 
  * @see info.semanticsoftware.lodexporter.TripleStoreInterface#getSubjectMappings(String)
  * @see info.semanticsoftware.lodexporter.LODeXporter#init()
@@ -36,30 +37,42 @@ package info.semanticsoftware.lodexporter;
  */
 public class SubjectMapping extends Mapping {
 
-    private String baseURI;
-	
+	private String baseURI;
+
 	/**
 	 * The constructor for creating a SubjectMapping instance.
-	 * @param rule the rule name
-	 * @param myBaseURI the baseURI must be a fully-qualified URI (e.g., http://semanticsoftware.info/lodexporter/)
-	 * @param type the rdf:type value
-	 * @param GATEType the GATE annotation type
+	 * 
+	 * @param rule
+	 *            the rule name
+	 * @param myBaseURI
+	 *            the baseURI must be a fully-qualified URI (e.g.,
+	 *            "http://semanticsoftware.info/lodexporter/")
+	 * @param type
+	 *            the rdf:type value
+	 * @param gateType
+	 *            the GATE annotation type
 	 */
-	public SubjectMapping(final String rule, final String myBaseURI, final String type, final String GATEType){
-		super(rule, type, GATEType);
+	public SubjectMapping(final String rule, final String myBaseURI, final String type, final String gateType) {
+		super(rule, type, gateType);
 		baseURI = myBaseURI;
 	}
 
 	/**
 	 * Returns the baseURI of this subject mapping instance.
+	 * 
 	 * @return the baseURI as String
 	 */
 	public final String getBaseURI() {
 		return baseURI;
 	}
-	
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see info.semanticsoftware.lodexporter.Mapping#toString()
+	 */
 	@Override
-	public String toString(){
-		return super.toString() + " URI=" + baseURI; 
+	public String toString() {
+		return super.toString() + " URI=" + baseURI;
 	}
 }

@@ -4,7 +4,7 @@
  * This file is part of the LODeXporter component.
  *
  * Copyright (c) 2015, 2016, 2017 Semantic Software Lab, http://www.semanticsoftware.info
- *    Rene Witte
+ *    René Witte
  *    Bahar Sateli
  *
  * This library is free software; you can redistribute it and/or

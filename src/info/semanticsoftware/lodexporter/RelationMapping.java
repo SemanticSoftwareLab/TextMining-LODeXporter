@@ -4,7 +4,7 @@
  * This file is part of the LODeXporter component.
  *
  * Copyright (c) 2015, 2016, 2017 Semantic Software Lab, http://www.semanticsoftware.info
- *    Rene Witte
+ *    René Witte
  *    Bahar Sateli
  *
  * This library is free software; you can redistribute it and/or
@@ -28,20 +28,20 @@ public class RelationMapping extends Mapping {
 
 	private final String domain;
 	private final String range;
-    private final String GATEattribute; //NOPMD
+    private final String gateAttribute;
     
 	public RelationMapping(final String mRule, final String mType, final String myDomain, final String myRange, final String myGATEattribute){
 		super(mRule,mType,null);
 		this.domain = myDomain;
 		this.range = myRange;
-		this.GATEattribute = myGATEattribute;
+		this.gateAttribute = myGATEattribute;
 	}
 
 	/**
 	 * @return the gATEattribute
 	 */
 	public final String getGATEattribute() {
-		return GATEattribute;
+		return gateAttribute;
 	}
 	/**
 	 * @return the domain
@@ -56,8 +56,11 @@ public class RelationMapping extends Mapping {
 		return range;
 	}
 
+	/* (non-Javadoc)
+	 * @see info.semanticsoftware.lodexporter.Mapping#toString()
+	 */
 	@Override
 	public String toString(){
-		return super.toString() + " domain=" + domain + " range=" + range + " GATEattribute=" + GATEattribute; 
+		return super.toString() + " domain=" + domain + " range=" + range + " GATEattribute=" + gateAttribute; 
 	}
 }
