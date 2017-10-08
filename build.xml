@@ -84,6 +84,9 @@
 		<fileset dir="${lib.dir}" includes="**/*.jar" />
 	</path>
 
+	<!-- Directory for code analysis configuration and reports -->
+	<property name="analysisDir" location="analysis" />
+
 	<!-- software revision number -->
 	<property name="release.version" value="1.0"/>
 	<property file="version.properties"/>
@@ -98,8 +101,11 @@
 	</target>
 
 	<!-- Build everything - the code and JavaDoc -->
-	<target name="all" depends="jar, javadoc" />
+	<target name="all" depends="prepare,jar,javadoc" />
 
+	<!-- Run code analysis tools -->
+	<target name="analysis" depends="checkstyle" />
+	
 	<!-- record information about a build -->
 	<target name="buildprops">
 		<tstamp>
@@ -224,4 +230,21 @@
 	</target>
 
 	<target name="distro.prepare" depends="clean.classes, clean.tests" />
+
+	<!-- Code analysis targets -->
+	
+	<!-- Checkstyle analysis -->
+	<property name="checkstyle.home" value="${analysisDir}" />
+	<property name="checkstyle.config" value="${checkstyle.home}/ssl_checkstyle.xml" />
+	<property name="checkstyle.report" value="${checkstyle.home}/checkstyle-result.xml" />
+	<target name="checkstyle" description="Source code analysis using checkstyle" depends="prepare">
+		<taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties" uri="antlib:com.puppycrawl.tools.checkstyle">
+			<classpath refid="compile.classpath" />
+		</taskdef>
+		<cs:checkstyle config="${checkstyle.config}" failOnViolation="false" >
+			<formatter type="xml" tofile="${checkstyle.report}"/>
+			<fileset dir="." includes="**/*.java" excludes="Applications/*/package/**/*.java"/>
+		</cs:checkstyle>
+	</target>
+
 </project>
