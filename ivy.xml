@@ -35,6 +35,7 @@
     	<dependency org="net.sourceforge.pmd" name="pmd" rev="5.5.4"/>
     	<dependency org="net.sourceforge.pmd" name="pmd-core" rev="5.5.4"/>
 	    <dependency org="net.sourceforge.pmd" name="pmd-java" rev="5.5.4"/>
-    	<dependency org="com.puppycrawl.tools" name="checkstyle" rev="8.2"/>
+    	<dependency org="com.puppycrawl.tools" name="checkstyle" rev="8.3"/>
+    	<dependency org="com.google.code.findbugs" name="findbugs" rev="3.0.1"/>
 	</dependencies>
 </ivy-module>

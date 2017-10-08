@@ -104,7 +104,7 @@
 	<target name="all" depends="prepare,jar,javadoc" />
 
 	<!-- Run code analysis tools -->
-	<target name="analysis" depends="checkstyle,pmd,cpd" />
+	<target name="analysis" depends="checkstyle,pmd,cpd,findbugs" />
 
 	<!-- record information about a build -->
 	<target name="buildprops">
@@ -197,6 +197,7 @@
          distro.prepare: remove intermediate files that shouldn't be in the
                          distribution -->
 	<target name="build" depends="jar" />
+	<target name="distro.prepare" depends="clean.classes, clean.tests" />
 
 	<!-- JUnit tests -->
 	<path id="test.classpath">
@@ -229,22 +230,33 @@
 		</jacoco:coverage>
 	</target>
 
-	<target name="distro.prepare" depends="clean.classes, clean.tests" />
-
 	<!-- Code analysis targets -->
 
 	<!-- Checkstyle analysis -->
-	<property name="checkstyle.home" value="${analysisDir}" />
-	<property name="checkstyle.config" value="${checkstyle.home}/ssl_checkstyle.xml" />
-	<property name="checkstyle.report" value="${checkstyle.home}/checkstyle-result.xml" />
 	<target name="checkstyle" description="Source code analysis using checkstyle" depends="prepare">
+		<property name="checkstyle.home" value="${analysisDir}" />
+		<property name="checkstyle.config" value="${checkstyle.home}/ssl_checkstyle.xml" />
+		<property name="checkstyle.report" value="${checkstyle.home}/checkstyle-result.xml" />
 		<taskdef resource="com/puppycrawl/tools/checkstyle/ant/checkstyle-ant-task.properties" uri="antlib:com.puppycrawl.tools.checkstyle">
 			<classpath refid="compile.classpath" />
 		</taskdef>
-		<cs:checkstyle config="${checkstyle.config}" failOnViolation="false" >
-			<formatter type="xml" tofile="${checkstyle.report}"/>
-			<fileset dir="." includes="**/*.java" excludes="Applications/*/package/**/*.java"/>
+		<cs:checkstyle config="${checkstyle.config}" failOnViolation="false">
+			<formatter type="xml" tofile="${checkstyle.report}" />
+			<fileset dir="." includes="**/*.java" excludes="Applications/*/package/**/*.java" />
 		</cs:checkstyle>
+	</target>
+	
+	<!-- Findbugs analysis -->
+	<property name="findbugs.home" value="/usr/local/durmtools/findbugs" />
+	<target name="findbugs" depends="compile">
+		<taskdef name="findbugs" classname="edu.umd.cs.findbugs.anttask.FindBugsTask" uri="antlib:edu.umd.cs.findbugs">
+			<classpath refid="compile.classpath" /> 
+		</taskdef>
+		<fb:findbugs home="${findbugs.home}" output="xml:withMessages" outputFile="${analysisDir}/findbugsXml.xml">
+			<auxClasspath refid="compile.classpath" />
+			<sourcePath path="." />
+			<fileset dir="." includes="**/*.jar" excludes="lib/*.jar,Applications/*/package/**/*.jar" />
+		</fb:findbugs>
 	</target>
 
 	<!-- PMD analysis -->
