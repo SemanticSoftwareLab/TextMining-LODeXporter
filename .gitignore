@@ -8,6 +8,8 @@ doc/javadoc/
 test/reports/
 version.properties
 checkstyle-result.xml
+pmd-result.xml
+cpd-result.xml
 
 # Libraries
 lib/

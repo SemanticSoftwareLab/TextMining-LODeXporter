@@ -249,9 +249,9 @@
 
 	<!-- PMD analysis -->
 	<target name="pmd" depends="prepare">
-		<taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask">
-			<classpath refid="compile.classpath" />
-		</taskdef>
+		<taskdef name="pmd" 
+			     classname="net.sourceforge.pmd.ant.PMDTask"
+				 classpathref="compile.classpath"/>
 		<pmd shortFilenames="true">
 			<sourceLanguage name="java" version="1.8"/>
 			<ruleset>${analysisDir}/ssl_pmd_java_ruleset.xml</ruleset>
@@ -264,9 +264,9 @@
 
 	<!-- CPD analysis -->
 	<target name="cpd" depends="prepare">
-		<taskdef name="cpd" classname="net.sourceforge.pmd.cpd.CPDTask">
-			<classpath refid="compile.classpath" />
-		</taskdef>
+		<taskdef name="cpd" 
+				 classname="net.sourceforge.pmd.cpd.CPDTask" 
+			     classpathref="compile.classpath"/>
 		<cpd minimumTokenCount="100"  encoding="utf-8" format="xml" outputFile="${analysisDir}/cpd-result.xml">
 			<fileset dir="." includes="**/*.java" excludes="Applications/*/package/**/*.java"/>
 		</cpd>
